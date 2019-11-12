@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐播放</title>
+    <link rel="stylesheet" href="audio.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="container">
+            <!-- 插入歌曲信息 -->
+            <ul class="songs info">
+                <li>
+                    <img class="pic" src="image/post-malone.jpg"/>
+                    <h2 id="id-name">I Fall Apart</h2>
+                    <span id="id-singer">Post Malone</span>
+                </li>
+            </ul>
+            <audio src="audio/I Fall Apart-Post Malone.mp3" id="id-audio-player"> </audio>
+            <div class="controls">
+                <i class="y j-step-prev arrow" id="id-button-prev"></i>
+                <i class="au j-play-circle play-button" id="id-button-play"></i>
+                <i class="y j-step-next arrow" id="id-button-next"></i>
+                <i class="y" id="click-random"></i>
+<!--                <i id="click-random"></i>-->
+                <i class="y j-sync-alt" id="click-loop"></i>
+                <i class="y" id="click-single"></i>
+<!--                <i class="y " id="click-single"></i>-->
+                <i class="j-music active"  data-index="-1" id="click-music"></i>
+            </div>
+
+            <div class="time">
+                <span class="time-current" id="id-current"> </span>
+                <span class="time-duration" id="id-duration"> </span>
+                <div class="base-progress">
+                    <span class="progressbar"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <div class="audio">
+                <div class="audio" data-path="audio/1.mp3"></div>
+                <div class="audio" data-path="audio/2.mp3"></div>
+                <div class="audio" data-path="audio/3.mp3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="y-api.js"></script>
+    <script src="audio.js"></script>
+</body>
+</html>
