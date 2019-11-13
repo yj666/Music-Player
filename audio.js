@@ -55,7 +55,6 @@ const bindBackward = (audio) => {
     let button = e('#id-button-prev')
     bindEvent(button, 'click', () => {
         let s = song.prevSong()
-        log('s', s)
         audio.src = s
         audio.play()
         playChange()
@@ -67,7 +66,6 @@ const bindForward = (audio) => {
     let button = e('#id-button-next')
     bindEvent(button, 'click', () => {
         let s = song.nextSong()
-        log('s', s)
         audio.src = s
         audio.play()
         playChange()
@@ -120,7 +118,7 @@ const bindEventLoop = (audio) => {
     bindEvent(audio, 'ended', () => {
         log('播放结束')
         let s = song.nextSong()
-        log('s is', s)
+        //log('s is', s)
         audio.src = s
         audio.play()
     })
@@ -128,30 +126,23 @@ const bindEventLoop = (audio) => {
 const bindClickLoop = () => {
     let button = e('#click-loop')
     bindEvent(button, 'click', (audio) => {
-        // log('点击了循环播放')
-        // bindEventLoop(audio)
-        log('随机播放')
         loopChange()
         bindRandom(audio)
     })
 }
 
 //随机播放
-const choice =(array) => {
+const choice = (array) => {
     array = this.songs
     let a = Math.random()
-    log('a', a)
     let index = Math.floor(a * array.length)
-    log('array', index)
     let src = 'audio/' + array[index]
     return src
 }
-const bindRandom =(audio) => {
+const bindRandom = (audio) => {
     audio = e('#id-audio-player')
     bindEvent( audio, 'ended', () => {
-        log('播放结束')
         let song = choice()
-        log('s is', song)
         audio.src = song
         audio.play()
     })
@@ -159,7 +150,6 @@ const bindRandom =(audio) => {
 const bindClickRandom = () => {
     let button = e('#click-random')
     bindEvent(button, 'click', (audio) => {
-        log('循环播放')
         randomChange()
         bindEventLoop(audio)
     })
@@ -175,7 +165,6 @@ const bindSingle = (audio) => {
 const bindClickSingle = () => {
     let button = e('#click-single')
     bindEvent(button, 'click', (audio) => {
-        // log('随机播放')
         // bindSingle(audio)
     })
 }
@@ -238,7 +227,7 @@ const showTime = (current, idName) => {
 }
 
 //歌曲时长
-const bindDuration =(audio) => {
+const bindDuration = (audio) => {
     bindEvent(audio, 'canplay', () => {
         let duration = audio.duration
         showTime(duration, '.time-duration')
@@ -246,7 +235,7 @@ const bindDuration =(audio) => {
     })
 }
 //开始时间
-const bindCurrenTime =(audio) => {
+const bindCurrenTime = (audio) => {
     let current = audio.currentTime
     showTime(current, '.time-current')
 }
@@ -264,7 +253,6 @@ const bindChange = () => {
     bindAll(change, 'click', (event) => {
         let self = event.target
         let song = self.dataset.path
-        log('song', song)
         audio.src = song
         audio.play()
     })
@@ -296,9 +284,6 @@ const bindEvents = (audio, img) => {
     bindCurrenTime(audio)
     bindDuration(audio)
     bindEventTimer(audio)
-    //bindChange()
-    //bindForward(audio)
-    //bindBackward(audio)
     bindClickLoop()
     bindClickRandom()
     bindClickSingle()
@@ -440,10 +425,9 @@ const clickMusic = function () {
         ]
         music('我的音乐', songs, (index) => {
             if (index == -1) {
-                log('用户点了取消')
-            } else {
-                log('用户选择了 ', songs[index])
-
+                
+            } else { 
+                
             }
         })
     })
